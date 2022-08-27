@@ -7,7 +7,7 @@ import iconMenu from "../img/menu.png"
 
 const Header = ()=>{
 const [ativo,setAtivo] = useState(false);
-   
+const tela = document.documentElement.clientWidth   
     
     return(
         <ContainerHeader mobile={ativo}>
@@ -25,12 +25,14 @@ const [ativo,setAtivo] = useState(false);
                     <li>Contact</li>
                 </ul>
             </div>
-            {document.documentElement.clientWidth <= "475"
-            &&<div
-                className="btn"
-                style={{cursor:"pointer"}}>
-                    <img src={iconMenu} alt="z"
-                        onClick={()=>setAtivo(!ativo)}
+
+            {
+            
+            tela <= "475"
+            &&<div style={{cursor:"pointer"}}>
+                 <img
+                  src={iconMenu} alt="menu-mobile"
+                  onClick={()=>setAtivo(!ativo)}
                     />
                 </div>}
            
