@@ -1,5 +1,5 @@
 import React,{useState} from "react";
-import {ContainerHeader} from "../style/styled"
+import {ContainerHeader,MenuMobile} from "../style/styled"
 import logo from "../img/Logo.png"
 import icon from "../img/Icon.png"
 import iconMenu from "../img/menu.png"
@@ -7,7 +7,6 @@ import iconMenu from "../img/menu.png"
 
 const Header = ()=>{
 const [ativo,setAtivo] = useState(false);
-const tela = document.documentElement.clientWidth   
     
     return(
         <ContainerHeader mobile={ativo}>
@@ -25,16 +24,14 @@ const tela = document.documentElement.clientWidth
                     <li>Contact</li>
                 </ul>
             </div>
-
-            {
-            
-            tela <= "475"
-            &&<div style={{cursor:"pointer"}}>
+            <MenuMobile
+            onClick={()=>setAtivo(!ativo)}
+            >
                  <img
                   src={iconMenu} alt="menu-mobile"
-                  onClick={()=>setAtivo(!ativo)}
+                  
                     />
-                </div>}
+                </MenuMobile>
            
         </ContainerHeader>
     )

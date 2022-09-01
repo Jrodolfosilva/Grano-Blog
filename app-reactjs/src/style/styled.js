@@ -11,6 +11,7 @@ height: 10vh;
 padding: 1rem ${padding};
 background-color: beige;
 border-bottom: 0.3rem solid #e2e2e2;
+width:100%;
 
 img{
     cursor: pointer;
@@ -187,8 +188,7 @@ div:first-child{
 div:last-child ul{
     display: flex;
     align-items: center;
-    gap:6rem;
-    justify-content: space-between;
+    gap:12rem;
     flex-wrap: wrap;
     ;
 }
@@ -218,7 +218,7 @@ div:last-child ul{
     div:last-child ul{
         margin-top: 4rem;
         justify-content: center;
-        gap: 6rem;}
+        gap: 4rem;}
 }
 
 
@@ -256,4 +256,13 @@ img{width: 20rem;
    font-size: 1.6rem;}
 
 }
+`
+export const MenuMobile = styled.div`
+display:none;
+
+@media (max-width:376px) {
+    display: block;
+    cursor:pointer;
+}
+
 `

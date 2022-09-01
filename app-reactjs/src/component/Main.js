@@ -6,88 +6,21 @@ import Card from "./Card";
 
 const Main = ()=>{
     const [posts,sePosts] = useState([]);
-    
-
     const [categories, setCategories] = useState("")
-    
     useEffect(()=>{
         axios.get('https://testewp.granostudio.com.br/?rest_route=/wp/v2/posts')
-        .then((data)=>sePosts(data))
+        .then((data)=>sePosts(data.data))
         .catch((error)=>{
-        console.log(error)    
+            console.log(error)    
         })
+        
     },[])
     
-    /*
-    filtrar request
-    tratar error e load
-    filtar categories sem fazer novo request  --- pronto no teste
-    sort para ordenar posts
-    ----component Header usa hook para força 1xrender/ responsivo.
-    
-    */
-    
-    
-    
-    
-    /*teste */
-    const resp =[
-          
-        {
-            title:"POst3fs",
-            date: "junho 8 2022",
-            author:"Rodolfo silva",
-            image:"https://lolitajoias.com.br/wp-content/uploads/2020/09/no-image.jpg",
-            categories:"category2"
-        },
-        {
-            title:"POst3sd",
-            date: "junho 8 2022",
-            autor:"Rodolfo silva",
-            image:"https://lolitajoias.com.br/wp-content/uploads/2020/09/no-image.jpg",
-            ccategories:"category1"
-        },
-        {
-            title:"POst4ff",
-            date: "junho 8 2022",
-            autor:"Rodolfo silva",
-            image:"https://lolitajoias.com.br/wp-content/uploads/2020/09/no-image.jpg",
-            categories:"category1"
-        },
-        {
-            title:"POst45jgh",
-            date: "junho 8 2022",
-            autor:"Rodolfo silva",
-            image:"https://lolitajoias.com.br/wp-content/uploads/2020/09/no-image.jpg",
-            categories:"category1"
-        },
-        {
-            title:"POst4k4",
-            date: "junho 8 2022",
-            autor:"Rodolfo silva",
-            image:"https://lolitajoias.com.br/wp-content/uploads/2020/09/no-image.jpg",
-            categories:"category1"
-        },
-        {
-            title:"POst5ghk5",
-            date: "junho 8 2022",
-            autor:"Rodolfo silva",
-            image:"https://lolitajoias.com.br/wp-content/uploads/2020/09/no-image.jpg",
-            categories:"category1"
-        },
-        {
-            title:"POst4jhk5",
-            date: "junho 8 2022",
-            autor:"Rodolfo silva",
-            image:"https://lolitajoias.com.br/wp-content/uploads/2020/09/no-image.jpg",
-            categories:"category1"
-        }
-    ]
-    const filtro = resp.filter((post)=>(
-        post.categories === categories
-       ))
+    let filtro;
+    if(categories&&posts){
+    filtro = posts.filter((post)=> post.categories[0] === Number(categories))
+    }
 
-    /*teste render/filter */
    return(
         <ContainerMain>
             <div>
@@ -108,19 +41,24 @@ const Main = ()=>{
            </ul>
            </div>
            <div>
-            <ul>
+            <ul>{
+                filtro?
+                filtro.map((post)=>(
+                    <Card
+                    key={post.id}
+                    post={post}
+                    />
+                )):posts.map((post)=>(
+                    <Card
+                    key={post.id}
+                    post={post}
+                    />
 
-            {/*
-            tratar load e error/reposta no front
-            
-            */
-            categories.length?
-            filtro.map((post)=>(
-                <Card key={post.title} post={post}/>))
-            
-           : resp.map((post)=>(
-                      <Card key={post.title} post={post}/>))
-           }
+                ))
+                
+                /*Validar dados que não vem... as categorias 1 e 2 não tem postes deve mostrar uma mensagem na tela */
+               }
+                      
             </ul>
                 
             </div> 
