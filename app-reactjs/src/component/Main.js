@@ -20,6 +20,7 @@ const Main = ()=>{
     if(categories&&posts){
     filtro = posts.filter((post)=> post.categories[0] === Number(categories))
     }
+  
 
    return(
         <ContainerMain>
@@ -42,19 +43,19 @@ const Main = ()=>{
            </div>
            <div>
             <ul>{
-                filtro?
-                filtro.map((post)=>(
-                    <Card
-                    key={post.id}
-                    post={post}
-                    />
-                )):posts.map((post)=>(
-                    <Card
-                    key={post.id}
-                    post={post}
-                    />
-
-                ))
+              filtro?
+              filtro.map((post)=>(
+                <Card
+                key={post.id}
+                post={post}
+                />
+              )):
+              posts.map((post)=>(
+                <Card
+                key={post.id}
+                post={post}
+                />
+              ))
                 
                 /*Validar dados que não vem... as categorias 1 e 2 não tem postes deve mostrar uma mensagem na tela */
                }
