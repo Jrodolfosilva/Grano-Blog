@@ -24,7 +24,7 @@ const Main = ()=>{
 
    return(
         <ContainerMain>
-            <div>
+            <section>
             <h2>Browser The Category</h2>
            <ul>
                 <li
@@ -40,7 +40,7 @@ const Main = ()=>{
                 onClick={()=>setCategories("4")}
                 >Categories 4</li> 
            </ul>
-           </div>
+           </section>
            <div>
             <ul>{
               filtro?

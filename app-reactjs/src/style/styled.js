@@ -158,10 +158,10 @@ div:last-child{
 export const ContainerMain = styled.div`
 padding:  ${padding};
 
-div:first-child{
+section{
     display: flex;
     flex-direction: column;
-    gap:3rem;
+    gap:03rem;
 
     ul {
         display: flex;
